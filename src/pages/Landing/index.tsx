@@ -3,6 +3,7 @@ import { getPopularMovies } from '../../services/tmdbApi';
 import { Card, CardContent, CardMedia, Typography, CircularProgress, Container, Alert } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import CardMovie from '../../components/CardMovie';
+import Login from '../../components/Login';
 
 interface Movie {
     id: number;
@@ -39,6 +40,7 @@ function Landing() {
 
     return (
         <Container>
+            <Login />
             <Typography variant="h1" gutterBottom>
                 Films Populaires
             </Typography>
