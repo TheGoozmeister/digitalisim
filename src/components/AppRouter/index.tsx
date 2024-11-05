@@ -3,14 +3,16 @@ import {
     Routes,
     Route
 } from "react-router-dom";
+import Landing from "../../pages/Landing";
+import Movie from "../../pages/Movie";
 
 
 function AppRouter () : JSX.Element {
     return (
         <Router>
             <Routes>
-                <Route path="/" />
-                <Route path="/" />
+                <Route path="/" element={<Landing />} />
+                <Route path="/movie/:movieId" element={<Movie />} />
             </Routes>
         </Router>
     );
