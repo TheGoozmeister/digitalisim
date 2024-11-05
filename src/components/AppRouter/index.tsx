@@ -5,8 +5,9 @@ import {
 } from "react-router-dom";
 import Landing from "../../pages/Landing";
 import Movie from "../../pages/Movie";
-import Header from "../../pages/Header";
+import Header from "../Header";
 import Footer from "../Footer";
+import Login from "../../pages/Login";
 
 
 function AppRouter () : JSX.Element {
@@ -16,6 +17,7 @@ function AppRouter () : JSX.Element {
             <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/movie/:movieId" element={<Movie />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
             <Footer />
         </Router>

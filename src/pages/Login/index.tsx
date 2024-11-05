@@ -2,9 +2,15 @@
 
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Alert } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; // Import du hook useNavigate
+import { AppDispatch } from '../../store/store';
 import { login } from '../../services/authApi';
+import { loginReducer } from '../../store/auth/authSlice';
 
-const Login: React.FC = () => {
+function Login() {
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate(); // Initialisation du hook useNavigate
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
@@ -18,8 +24,12 @@ const Login: React.FC = () => {
         try {
             const userCredentials = { username, password };
             const response = await login(userCredentials);
+
+            // Enregistrer les informations utilisateur dans Redux après la connexion réussie
+            dispatch(loginReducer({userName: userCredentials.username }));
+
             console.log('Connexion réussie:', response);
-            // Rediriger ou mettre à jour l'état selon vos besoins
+            navigate("/"); // Redirection vers la page d'accueil
         } catch (err) {
             setError('Erreur lors de la connexion. Veuillez vérifier vos informations.');
             console.error('Erreur de connexion:', err);
@@ -64,6 +74,6 @@ const Login: React.FC = () => {
             </form>
         </Container>
     );
-};
+}
 
 export default Login;
