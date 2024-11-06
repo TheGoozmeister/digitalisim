@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getPopularMovies } from '../../services/tmdbApi';
-import {Typography, CircularProgress, Container, Alert,Select, MenuItem, FormControl, InputLabel  } from '@mui/material';
+import { Typography, CircularProgress, Container, Alert, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import CardMovie from '../../components/CardMovie';
 import DrawerFilter from '../../components/DrawerFilter';
-import { SelectChangeEvent } from '@mui/material'; // Import du bon type
+import { SelectChangeEvent } from '@mui/material';
 
 interface Movie {
     id: number;
@@ -16,22 +16,25 @@ interface Movie {
     original_language: string;
     release_date: string;
 }
+
 interface Filters {
     adult: boolean;
     minRating: number;
+    maxRating: number;
     language: string;
+    releaseYearRange: number[]; 
 }
 
-
 function Landing() {
-
-    const [movies, setMovies] = useState<Movie[]>([]); // Tableau de films populaires
-    const [loading, setLoading] = useState<boolean>(true); // Indicateur de chargement
-    const [error, setError] = useState<string | null>(null); // Gestion des erreurs
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
     const [filters, setFilters] = useState<Filters>({
         adult: false,
         minRating: 0,
-        language: 'all'
+        maxRating: 10,
+        language: 'all',
+        releaseYearRange: [1980, 2024]
     });
     const [sortCriterion, setSortCriterion] = useState<string>('release_date_desc');
 
@@ -40,7 +43,6 @@ function Landing() {
             try {
                 const data = await getPopularMovies();
                 setMovies(data.results);
-                console.log(data)
             } catch (err) {
                 setError("Erreur lors du chargement des films.");
                 console.error("Erreur lors de la récupération des films populaires :", err);
@@ -62,10 +64,14 @@ function Landing() {
 
     const sortedMovies = [...movies]
         .filter((movie) => {
+            const releaseYear = new Date(movie.release_date).getFullYear();
             return (
                 (filters.adult || !movie.adult) &&
                 movie.vote_average >= filters.minRating &&
-                (filters.language === 'all' || movie.original_language === filters.language)
+                movie.vote_average <= filters.maxRating &&
+                (filters.language === 'all' || movie.original_language === filters.language) &&
+                releaseYear >= filters.releaseYearRange[0] && // Filtre de l'année minimale
+                releaseYear <= filters.releaseYearRange[1]   // Filtre de l'année maximale
             );
         })
         .sort((a, b) => {
@@ -81,9 +87,9 @@ function Landing() {
             return 0;
         });
 
-    if (loading) return <CircularProgress />; // Affichage pendant le chargement
+    if (loading) return <CircularProgress />;
 
-    if (error) return <Alert severity="error">{error}</Alert>; // Affichage de l'erreur, si elle existe
+    if (error) return <Alert severity="error">{error}</Alert>;
 
     return (
         <Container>
@@ -104,8 +110,8 @@ function Landing() {
                 </Select>
             </FormControl>
             <Grid container spacing={2}>
-                {sortedMovies.map((movie, index) => (
-                    <Grid size={{xs:12, md:6}} key={movie.id}>
+                {sortedMovies.map((movie) => (
+                    <Grid size={{ xs: 12, md: 6 }} key={movie.id}>
                         <CardMovie
                             title={movie.title}
                             id={movie.id}

@@ -20,7 +20,7 @@ function DrawerFilter({ onFilterChange }: DrawerFilterProps) {
     minRating: 0,
     maxRating: 10,
     language: 'all',
-    releaseYearRange: [1980, 2023]
+    releaseYearRange: [1980, 2024]
   });
 
   const toggleDrawer = (newOpen: boolean) => () => {
