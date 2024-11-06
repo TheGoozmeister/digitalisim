@@ -32,7 +32,7 @@ const theme = createTheme({
                 root: {
                     backgroundColor: '#333',
                     padding: '16px 24px',  // Augmenter le padding en haut et en bas
-                    zIndex: 1300,  // Assurez-vous que l'AppBar est toujours au-dessus des autres éléments
+                    zIndex: 100,  // Assurez-vous que l'AppBar est toujours au-dessus des autres éléments
                 },
             },
         },
