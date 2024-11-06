@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid2';
 import CardMovie from '../../components/CardMovie';
 import DrawerFilter from '../../components/DrawerFilter';
 import { SelectChangeEvent } from '@mui/material';
+import Box from '@mui/material/Box'; // Ajoutez Box ici pour la mise en page
 
 interface Movie {
     id: number;
@@ -87,17 +88,35 @@ function Landing() {
             return 0;
         });
 
-    if (loading) return <CircularProgress />;
+    if (loading) return (
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh', // Prend toute la hauteur de l'écran
+            }}
+        >
+            <CircularProgress />
+        </Box>
+    );
 
     if (error) return <Alert severity="error">{error}</Alert>;
 
     return (
         <Container>
-            <Typography variant="h1" gutterBottom>
-                Heat ou Hit ?
+            <Typography 
+                variant="h1" 
+                sx={{fontSize:{xs:'2.4rem'}}}
+                gutterBottom
+            >
+                Heat or Hit ?
             </Typography>
-            <Typography variant="h2" gutterBottom>
-                Chef d'oeuvre ou nanar ? <br /> A vous de voir ! 
+            <Typography 
+                variant="h2" 
+                sx={{fontSize:{xs:'1.5rem'}}}
+                gutterBottom>
+                Chef d'oeuvre ou nanar ? A vous de voir ! 
             </Typography>
             <DrawerFilter onFilterChange={handleFilterChange} />            
             <FormControl fullWidth sx={{ mb: 2 }}>

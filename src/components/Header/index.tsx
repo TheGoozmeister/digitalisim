@@ -25,12 +25,17 @@ function Header() {
             <Toolbar>
                 {/* Titre de l'application sur deux lignes */}
                 <Box sx={{ flexGrow: 1, cursor: 'pointer' }}>
+                <Link 
+                    to="/" 
+                    style={{ textDecoration: 'none', color: 'inherit'}}
+                >
                     <Typography variant="h4" color="inherit">
                         Mov'Heat
                     </Typography>
                     <Typography variant="h5" color="inherit">
                         Mov'Hit
                     </Typography>
+                </Link>
                 </Box>
 
                 {/* Bouton Menu Burger visible en mode mobile et desktop */}

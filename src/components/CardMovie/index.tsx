@@ -33,7 +33,7 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
                 },
                 borderRadius: 2,
                 overflow: 'hidden',
-                height: 300,  // Hauteur fixe de la carte, ajustez selon vos besoins
+                height: {xs:200, sm:300},  // Hauteur fixe de la carte, ajustez selon vos besoins
             }}
         >
             {/* Image */}
@@ -44,7 +44,7 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
                 sx={{
                     objectFit: 'cover',
                     borderRadius: '4px 0 0 4px', 
-                    width: 250, // Largeur de l'image
+                    width: {xs:100, sm:250}, // Largeur de l'image
                     height: '100%',  // Utilise 100% de la hauteur de la carte
                 }}
             />
@@ -57,7 +57,7 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
 
                 {/* Description */}
                 <Box sx={{
-                    height: "100px",  // Hauteur fixe de la description
+                    height: {xs: "60px", md:"100px"},  // Hauteur fixe de la description
                     overflow: "hidden",  // Cache tout ce qui dépasse
                 }}>
                     <Typography 

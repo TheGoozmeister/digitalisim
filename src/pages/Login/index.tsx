@@ -40,7 +40,12 @@ function Login() {
 
     return (
         <Container maxWidth="xs">
-            <Typography variant="h4" component="h1" gutterBottom>
+            <Typography 
+                variant="h4" 
+                component="h1" 
+                gutterBottom
+                sx= {{mt:4, mb:4}}
+            >
                 Connexion
             </Typography>
             {error && <Alert severity="error">{error}</Alert>}
@@ -51,6 +56,7 @@ function Login() {
                     fullWidth
                     margin="normal"
                     value={username}
+                    sx={{mt:4}}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <TextField
@@ -68,6 +74,7 @@ function Login() {
                     color="primary"
                     fullWidth
                     disabled={loading}
+                    sx={{mt:4}}
                 >
                     {loading ? 'Chargement...' : 'Se connecter'}
                 </Button>
