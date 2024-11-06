@@ -1,4 +1,3 @@
-// src/theme.ts
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -15,31 +14,45 @@ const theme = createTheme({
         },
     },
     components: {
+        // Personnalisation de l'AppBar (Header)
         MuiAppBar: {
             styleOverrides: {
                 root: {
-                backgroundColor: '#333', 
+                    backgroundColor: '#333',
+                    padding: '16px 24px',  // Augmenter le padding en haut et en bas
+                    zIndex: 1300,  // Assurez-vous que l'AppBar est toujours au-dessus des autres éléments
                 },
             },
         },
-        MuiIconButton: {
+        // Personnalisation de la Card (Carte du film)
+        MuiCard: {
             styleOverrides: {
                 root: {
-                    display: 'block', 
+                    display: 'flex',
+                    flexDirection: 'row',
+                    borderRadius: 8,
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    height: 300,
                 },
             },
         },
-        MuiDrawer: {
-            styleOverrides: {
-                paper: {
-                top: 0, 
-                },
-            },
-        },
-        MuiListItem: {
+        MuiCardMedia: {
             styleOverrides: {
                 root: {
-                padding: '8px 16px', 
+                    objectFit: 'cover',
+                    borderRadius: '4px 0 0 4px', 
+                    height: '100%'
+                },
+            },
+        },
+        MuiCardContent: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    padding: 16,
                 },
             },
         },

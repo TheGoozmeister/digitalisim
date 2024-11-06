@@ -42,32 +42,38 @@ function Header() {
                     <MenuIcon />
                 </IconButton>
 
-                {/* Menu Drawer qui s'ouvre depuis le haut */}
+                {/* Menu Drawer qui s'ouvre depuis la droite */}
                 <Drawer
-                    anchor="top" // Menu Drawer venant du haut
+                    anchor="right" // Le Drawer vient maintenant de la droite
                     open={drawerOpen}
                     onClose={toggleDrawer(false)}
                 >
-                    <List sx={{ width: '100%' }}>
-                        <ListItem
-                            component={Link}
-                            to="/"
-                            onClick={toggleDrawer(false)}
-                        >
-                            <ListItemText primary="Accueil" />
-                        </ListItem>
-                        {isLoggedIn ? (
-                            <ListItem onClick={() => { handleLogout(); toggleDrawer(false)(); }}>
-                                <ListItemText primary="Se déconnecter" />
-                            </ListItem>
-                        ) : (
+                    <List sx={{ width: '250px' }}> {/* Taille du Drawer ajustée */}
+                        {isLoggedIn && 
                             <ListItem
                                 component={Link}
-                                to="/login"
+                                to="/"
                                 onClick={toggleDrawer(false)}
                             >
-                                <ListItemText primary="Se connecter" />
+                                <ListItemText primary="Accueil" />
                             </ListItem>
+                        }
+                        {isLoggedIn ? (
+                            <>
+                                <ListItem onClick={() => { handleLogout(); toggleDrawer(false)(); }}>
+                                    <ListItemText primary="Se déconnecter" />
+                                </ListItem>
+                            </>
+                        ) : (
+                            <>
+                                <ListItem
+                                    component={Link}
+                                    to="/login"
+                                    onClick={toggleDrawer(false)}
+                                >
+                                    <ListItemText primary="Se connecter" />
+                                </ListItem>
+                            </>
                         )}
                     </List>
                 </Drawer>

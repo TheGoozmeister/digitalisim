@@ -100,7 +100,7 @@ function Landing() {
             </FormControl>
             <Grid container spacing={2}>
                 {sortedMovies.map((movie, index) => (
-                    <Grid size={index % 2 === 0 ? 8 : 4} key={movie.id}>
+                    <Grid size={{xs:12, md:6}} key={movie.id}>
                         <CardMovie
                             title={movie.title}
                             id={movie.id}
