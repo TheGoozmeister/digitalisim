@@ -32,9 +32,7 @@ async function login(userDatas: UserCredentials): Promise<LoginResponse> {
             userDatas, 
             { headers }
         );
-        console.log("onest al")
         const data = response.data;
-        console.log("data", data)
         if (data.error) throw new Error(data.error); 
         setToken(data.token);
         return data; 

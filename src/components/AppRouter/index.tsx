@@ -12,6 +12,7 @@ import ProtectedRoute from "../ProtectedRoute";
 
 
 function AppRouter(): JSX.Element {
+    
     return (
         <Router>
             <Header />
