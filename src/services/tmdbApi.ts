@@ -15,7 +15,7 @@ const tmdbApi = axios.create({
     },
 });
 
-async function getPopularMovies(page = 1) {
+async function getPopularMovies(page: number) {
     try {
         const response = await tmdbApi.get('/movie/popular', { params: { page } });
         return response.data;

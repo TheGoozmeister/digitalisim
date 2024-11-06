@@ -41,9 +41,17 @@ function Landing() {
 
     useEffect(() => {
         const fetchMovies = async () => {
+            setLoading(true);
             try {
-                const data = await getPopularMovies();
-                setMovies(data.results);
+                // Récupération de la première page (les plus populaires)
+                const firstPageData = await getPopularMovies(1);
+                const popularMovies = firstPageData.results;
+
+                const randomPageData = await getPopularMovies(15);
+                const randomPopularMovies = randomPageData.results;
+
+                setMovies([...popularMovies, ...randomPopularMovies]);
+
             } catch (err) {
                 setError("Erreur lors du chargement des films.");
                 console.error("Erreur lors de la récupération des films populaires :", err);
