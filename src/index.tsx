@@ -8,6 +8,7 @@ import AppRouter from './components/AppRouter';
 import store from './store/store';
 import theme from "./style/theme";
 
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

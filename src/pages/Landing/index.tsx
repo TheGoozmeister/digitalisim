@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid2';
 import CardMovie from '../../components/CardMovie';
 import DrawerFilter from '../../components/DrawerFilter';
 import { SelectChangeEvent } from '@mui/material';
-import Box from '@mui/material/Box'; // Ajoutez Box ici pour la mise en page
+import Box from '@mui/material/Box'; 
 
 interface Movie {
     id: number;
@@ -27,6 +27,7 @@ interface Filters {
 }
 
 function Landing() {
+
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -43,14 +44,9 @@ function Landing() {
         const fetchMovies = async () => {
             setLoading(true);
             try {
-                // Récupération de la première page (les plus populaires)
                 const firstPageData = await getPopularMovies(1);
                 const popularMovies = firstPageData.results;
-
-                const randomPageData = await getPopularMovies(15);
-                const randomPopularMovies = randomPageData.results;
-
-                setMovies([...popularMovies, ...randomPopularMovies]);
+                setMovies(popularMovies);
 
             } catch (err) {
                 setError("Erreur lors du chargement des films.");
@@ -79,8 +75,8 @@ function Landing() {
                 movie.vote_average >= filters.minRating &&
                 movie.vote_average <= filters.maxRating &&
                 (filters.language === 'all' || movie.original_language === filters.language) &&
-                releaseYear >= filters.releaseYearRange[0] && // Filtre de l'année minimale
-                releaseYear <= filters.releaseYearRange[1]   // Filtre de l'année maximale
+                releaseYear >= filters.releaseYearRange[0] && 
+                releaseYear <= filters.releaseYearRange[1]  
             );
         })
         .sort((a, b) => {
@@ -102,7 +98,7 @@ function Landing() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '100vh', // Prend toute la hauteur de l'écran
+                height: '100vh', 
             }}
         >
             <CircularProgress />
@@ -153,5 +149,6 @@ function Landing() {
         </Container>
     );
 }
+
 
 export default Landing;

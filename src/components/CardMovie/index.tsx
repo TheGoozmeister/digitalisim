@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Star, CalendarToday } from '@mui/icons-material';
@@ -13,6 +13,7 @@ interface CardMovieProps {
 }
 
 function CardMovie({ title, id, cover, description, rating, releaseDate }: CardMovieProps): JSX.Element {
+
     const navigate = useNavigate();
     const imageUrl = `https://image.tmdb.org/t/p/w500${cover}`;
 
@@ -26,17 +27,16 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
             sx={{
                 cursor: 'pointer',
                 display: 'flex',
-                flexDirection: 'row',  // Card in row direction
+                flexDirection: 'row',  
                 boxShadow: 3,
                 '&:hover': {
                     boxShadow: 6,
                 },
                 borderRadius: 2,
                 overflow: 'hidden',
-                height: {xs:200, sm:300},  // Hauteur fixe de la carte, ajustez selon vos besoins
+                height: {xs:200, sm:300},  
             }}
         >
-            {/* Image */}
             <CardMedia
                 component="img"
                 image={imageUrl}
@@ -44,21 +44,17 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
                 sx={{
                     objectFit: 'cover',
                     borderRadius: '4px 0 0 4px', 
-                    width: {xs:100, sm:250}, // Largeur de l'image
-                    height: '100%',  // Utilise 100% de la hauteur de la carte
+                    width: {xs:100, sm:200, md:200}, 
+                    height: '100%',  
                 }}
             />
-
-            {/* Information Content */}
             <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 2 }}>
                 <Typography variant="h6" component="div" gutterBottom>
                     {title}
                 </Typography>
-
-                {/* Description */}
                 <Box sx={{
-                    height: {xs: "60px", md:"100px"},  // Hauteur fixe de la description
-                    overflow: "hidden",  // Cache tout ce qui dépasse
+                    height: {xs: "60px", md:"100px"},  
+                    overflow: "hidden",  
                 }}>
                     <Typography 
                         variant="body2" 
@@ -66,22 +62,19 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
                         sx={{
                             display: '-webkit-box',
                             WebkitBoxOrient: 'vertical',
-                            WebkitLineClamp: 3,  // Limite à 3 lignes
-                            textOverflow: 'ellipsis',  // Affiche "..." pour le texte trop long
+                            WebkitLineClamp: 3,  
+                            textOverflow: 'ellipsis',  
                         }}>
                         {description}
                     </Typography>
                 </Box>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
-                    {/* Note with Star Icon */}
                     <Box display="flex" alignItems="center">
                         <Star sx={{ fontSize: 16, marginRight: 0.5 }} />
                         <Typography variant="body2" color="text.secondary">
                             {rating.toFixed(1)} / 10
                         </Typography>
                     </Box>
-
-                    {/* Date with Calendar Icon */}
                     <Box display="flex" alignItems="center">
                         <CalendarToday sx={{ fontSize: 16, marginRight: 0.5 }} />
                         <Typography variant="body2" color="text.secondary">
@@ -93,5 +86,6 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
         </Card>
     );
 }
+
 
 export default CardMovie;

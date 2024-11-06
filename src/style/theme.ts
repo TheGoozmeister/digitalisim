@@ -26,17 +26,15 @@ const theme = createTheme({
         },
     },
     components: {
-        // Personnalisation de l'AppBar (Header)
         MuiAppBar: {
             styleOverrides: {
                 root: {
                     backgroundColor: '#333',
-                    padding: '16px 24px',  // Augmenter le padding en haut et en bas
-                    zIndex: 100,  // Assurez-vous que l'AppBar est toujours au-dessus des autres éléments
+                    padding: '16px 24px',  
+                    zIndex: 100,  
                 },
             },
         },
-        // Personnalisation de la Card (Carte du film)
         MuiCard: {
             styleOverrides: {
                 root: {
@@ -70,5 +68,6 @@ const theme = createTheme({
         },
     },
 });
+
 
 export default theme;

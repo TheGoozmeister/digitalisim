@@ -37,5 +37,5 @@ async function getMovieDetails(movieId: string) {
 
 export {
     getPopularMovies,
-    getMovieDetails // Assure-toi d'exporter cette fonction
+    getMovieDetails 
 };

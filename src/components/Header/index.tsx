@@ -1,4 +1,3 @@
-// src/components/Header.tsx
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, Box, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -7,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { logoutReducer } from '../../store/auth/authSlice';
 
+
 function Header() {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
     
-    const isDesktop = useMediaQuery('(min-width:600px)');
+    const isDesktop = useMediaQuery('(min-width:1000px)');
 
     const toggleDrawer = (open: boolean) => () => {
         setDrawerOpen(open);
@@ -38,8 +38,6 @@ function Header() {
                         </Typography>
                     </Link>
                 </Box>
-
-                {/* Affichage conditionnel du menu en fonction de la taille de l'écran */}
                 {isDesktop ? (
                     <List sx={{ display: 'flex' }}>
                         {isLoggedIn && 
@@ -48,7 +46,7 @@ function Header() {
                                 to="/"
                                 sx={{
                                     padding: '0 16px',
-                                    width: '200px', // Largeur plus grande pour garder le texte sur une seule ligne
+                                    width: '200px', 
                                     display: 'flex',
                                     justifyContent: 'center',
                                     textDecoration: 'none', 
@@ -63,7 +61,7 @@ function Header() {
                                 onClick={handleLogout} 
                                 sx={{
                                     padding: '0 16px', 
-                                    width: '200px', // Largeur plus grande pour "Se déconnecter" sur une ligne
+                                    width: '200px', 
                                     cursor: 'pointer', 
                                     display: 'flex',
                                     justifyContent: 'center',
@@ -79,7 +77,7 @@ function Header() {
                                 to="/login"
                                 sx={{
                                     padding: '0 16px',
-                                    width: '200px', // Largeur plus grande pour "Se connecter" sur une ligne
+                                    width: '200px', 
                                     display: 'flex',
                                     justifyContent: 'center',
                                     textDecoration: 'none', 
@@ -91,7 +89,6 @@ function Header() {
                         )}
                     </List>
                 ) : (
-                    // Menu burger visible uniquement sur mobile
                     <IconButton
                         color="inherit"
                         edge="end"
@@ -100,8 +97,6 @@ function Header() {
                         <MenuIcon />
                     </IconButton>
                 )}
-
-                {/* Menu Drawer qui s'ouvre depuis la droite */}
                 <Drawer
                     anchor="right"
                     open={drawerOpen}
@@ -142,5 +137,6 @@ function Header() {
         </AppBar>
     );
 }
+
 
 export default Header;

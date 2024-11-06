@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Box, Drawer, Button, List, Divider, ListItem, Typography, Slider, Checkbox, FormControlLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
+
 interface Filters {
   adult: boolean;
   minRating: number;
@@ -56,11 +57,6 @@ function DrawerFilter({ onFilterChange }: DrawerFilterProps) {
     <Box sx={{ width: 300, padding: 2 }} role="presentation">
       <Typography variant="h6" sx={{ m: 2 }}>Filtres</Typography>
       <Divider />
-
-      {/* Filtre pour les films pour adultes */}
-      
-
-      {/* Filtre pour la plage de notes */}
       <List>
         <ListItem sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: 2 }}>
           <Typography variant="subtitle1" sx={{ mb: 1 }}>Plage de notes</Typography>
@@ -79,10 +75,7 @@ function DrawerFilter({ onFilterChange }: DrawerFilterProps) {
           </Typography>
         </ListItem>
       </List>
-
       <Divider sx={{ my: 2 }} />
-
-      {/* Filtre pour la langue */}
       <List>
         <ListItem sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: 2 }}>
           <Typography variant="subtitle1" sx={{ mb: 1 }}>Langue</Typography>
@@ -98,10 +91,7 @@ function DrawerFilter({ onFilterChange }: DrawerFilterProps) {
           </Select>
         </ListItem>
       </List>
-
       <Divider sx={{ my: 2 }} />
-
-      {/* Filtre pour l'année de sortie */}
       <List>
         <ListItem sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: 2 }}>
           <Typography variant="subtitle1" sx={{ mb: 1 }}>Année de sortie</Typography>
@@ -151,5 +141,6 @@ function DrawerFilter({ onFilterChange }: DrawerFilterProps) {
     </div>
   );
 }
+
 
 export default DrawerFilter;

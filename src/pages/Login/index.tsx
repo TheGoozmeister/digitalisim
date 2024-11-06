@@ -3,33 +3,30 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Alert } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // Import du hook useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import { AppDispatch } from '../../store/store';
 import { login } from '../../services/authApi';
 import { loginReducer } from '../../store/auth/authSlice';
 
 function Login() {
     const dispatch = useDispatch<AppDispatch>();
-    const navigate = useNavigate(); // Initialisation du hook useNavigate
+    const navigate = useNavigate(); 
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); // Empêcher le rechargement de la page
+        event.preventDefault(); 
         setLoading(true);
-        setError(null); // Réinitialiser l'erreur avant de tenter la connexion
+        setError(null); 
 
         try {
             const userCredentials = { username, password };
             const response = await login(userCredentials);
-
-            // Enregistrer les informations utilisateur dans Redux après la connexion réussie
             dispatch(loginReducer({userName: userCredentials.username }));
-
             console.log('Connexion réussie:', response);
-            navigate("/"); // Redirection vers la page d'accueil
+            navigate("/"); 
         } catch (err) {
             setError('Erreur lors de la connexion. Veuillez vérifier vos informations.');
             console.error('Erreur de connexion:', err);
@@ -82,5 +79,6 @@ function Login() {
         </Container>
     );
 }
+
 
 export default Login;

@@ -16,7 +16,8 @@ interface MovieDetails {
 }
 
 function Movie(): JSX.Element {
-    const { movieId } = useParams<{ movieId: string | undefined }>(); // Récupération de l'ID du film à partir de l'URL
+
+    const { movieId } = useParams<{ movieId: string | undefined }>(); 
     const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -42,7 +43,7 @@ function Movie(): JSX.Element {
         };
 
         fetchMovieDetails();
-    }, [movieId]); // Le tableau de dépendances inclut movieId pour re-fetch si l'ID change
+    }, [movieId]); 
 
     if (loading) return (
         <Box
@@ -50,34 +51,31 @@ function Movie(): JSX.Element {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '100vh', // Prend toute la hauteur de l'écran
+                height: '100vh', 
             }}
         >
             <CircularProgress />
         </Box>
-    ); // Affichage pendant le chargement
+    ); 
 
-    if (error) return <Alert severity="error">{error}</Alert>; // Affichage de l'erreur, si elle existe
+    if (error) return <Alert severity="error">{error}</Alert>; 
 
-    if (!movieDetails) return <Typography variant="body1">Aucun détail disponible pour ce film.</Typography>; // Au lieu de retourner null, retourne un message
+    if (!movieDetails) return <Typography variant="body1">Aucun détail disponible pour ce film.</Typography>; 
 
     return (
-        <Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}> {/* Limiter la largeur de toute la page */}
-            {/* Titre du film centré avec marge différente en fonction de l'écran et taille de texte ajustée */}
+        <Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}> 
             <Typography
                 variant="h4"
                 gutterBottom
                 sx={{
-                    marginTop: { xs: 2, sm: 4 },  // Marge top différente pour les petits écrans
-                    marginBottom: { xs: 2, sm: 4 },  // Marge bottom différente pour les petits écrans
+                    marginTop: { xs: 2, sm: 4 },  
+                    marginBottom: { xs: 2, sm: 4 },  
                     textAlign: 'center',
-                    fontSize: { xs: '1.5rem', sm: '2.5rem' } // Taille du texte ajustée pour xs et sm
+                    fontSize: { xs: '1.5rem', sm: '2.5rem' } 
                 }}
             >
                 {movieDetails.title}
             </Typography>
-
-            {/* Image centrée */}
             <Box display="flex" justifyContent="center" mb={2}>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
@@ -85,38 +83,30 @@ function Movie(): JSX.Element {
                     style={{ width: '300px', height: 'auto' }}
                 />
             </Box>
-
-            {/* Description centrée, taille augmentée et largeur limitée avec taille de texte ajustée pour xs */}
             <Box display="flex" justifyContent="center" mb={2}>
                 <Typography
                     variant="body1"
                     sx={{
-                        maxWidth: '800px', // Limite la largeur de la description
-                        textAlign: 'center', // Centre le texte
-                        fontSize: { xs: '1rem', sm: '1.2rem' }  // Taille du texte ajustée pour xs et sm
+                        maxWidth: '800px', 
+                        textAlign: 'center', 
+                        fontSize: { xs: '1rem', sm: '1.2rem' }  
                     }}
                 >
                     {movieDetails.overview}
                 </Typography>
             </Box>
-
-            {/* Indication si c'est un film pour adulte */}
             {movieDetails.adult && (
                 <Chip label="Film pour adultes" color="error" icon={<Theaters />} sx={{ marginBottom: 2 }} />
             )}
-
             <Divider sx={{ marginY: 2 }} />
-
-            {/* Informations supplémentaires, sur la même ligne en grand écran, empilées en petit écran */}
             <Box display="flex" justifyContent="space-between" flexWrap="wrap" mb={2}>
-                {/* Note */}
                 <Box
                     display="flex"
                     alignItems="center"
                     sx={{
-                        flexBasis: { xs: '100%', sm: '22%' }, // Prend 100% de la largeur en xs, 22% en sm et plus
-                        marginBottom: { xs: 2, sm: 0 }, // Marge en bas en xs
-                        justifyContent: 'center' // Centrer les éléments en xs
+                        flexBasis: { xs: '100%', sm: '22%' }, 
+                        marginBottom: { xs: 2, sm: 0 }, 
+                        justifyContent: 'center' 
                     }}
                 >
                     <Star sx={{ fontSize: 20, marginRight: 0.5 }} />
@@ -124,8 +114,6 @@ function Movie(): JSX.Element {
                         {movieDetails.vote_average.toFixed(1)} / 10
                     </Typography>
                 </Box>
-
-                {/* Date de sortie */}
                 <Box
                     display="flex"
                     alignItems="center"
@@ -140,8 +128,6 @@ function Movie(): JSX.Element {
                         {new Date(movieDetails.release_date).toLocaleDateString()}
                     </Typography>
                 </Box>
-
-                {/* Pays de production */}
                 <Box
                     display="flex"
                     alignItems="center"
@@ -156,8 +142,6 @@ function Movie(): JSX.Element {
                         {movieDetails.production_countries.map(country => country.name).join(', ')}
                     </Typography>
                 </Box>
-
-                {/* Boîtes de production */}
                 <Box
                     display="flex"
                     flexWrap="wrap"
@@ -185,5 +169,6 @@ function Movie(): JSX.Element {
         </Box>
     );
 }
+
 
 export default Movie;
