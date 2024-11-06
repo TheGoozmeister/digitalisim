@@ -3,7 +3,7 @@ import { getPopularMovies } from '../../services/tmdbApi';
 import {Typography, CircularProgress, Container, Alert,Select, MenuItem, FormControl, InputLabel  } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import CardMovie from '../../components/CardMovie';
-import TemporaryDrawer from '../../components/TemporaryDrawer';
+import DrawerFilter from '../../components/DrawerFilter';
 import { SelectChangeEvent } from '@mui/material'; // Import du bon type
 
 interface Movie {
@@ -21,6 +21,7 @@ interface Filters {
     minRating: number;
     language: string;
 }
+
 
 function Landing() {
 
@@ -86,9 +87,13 @@ function Landing() {
 
     return (
         <Container>
-            <TemporaryDrawer onFilterChange={handleFilterChange} />            <Typography variant="h1" gutterBottom>
-                Films Populaires
+            <Typography variant="h1" gutterBottom>
+                Heat ou Hit ?
             </Typography>
+            <Typography variant="h2" gutterBottom>
+                Chef d'oeuvre ou nanar ? <br /> A vous de voir ! 
+            </Typography>
+            <DrawerFilter onFilterChange={handleFilterChange} />            
             <FormControl fullWidth sx={{ mb: 2 }}>
                 <InputLabel>Tri par</InputLabel>
                 <Select value={sortCriterion} onChange={handleSortChange}>

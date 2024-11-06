@@ -2,7 +2,19 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     typography: {
-        fontFamily: "'Poppins', sans-serif", 
+        fontFamily: "'Poppins', sans-serif",
+        h1: {
+            fontWeight: '700',
+            fontSize: '4rem',
+            lineHeight : 1,
+            margin: "30px 0px 0px 0px"
+        },
+        h2: {
+            fontFamily: "'Roboto', sans-serif",
+            fontWeight: '400',
+            fontSize: '2.5rem',
+            lineHeight : 1,
+        },
         h4: {
             fontWeight: 'bold',
             fontSize: '2rem',
