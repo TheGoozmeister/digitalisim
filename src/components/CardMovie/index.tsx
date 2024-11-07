@@ -23,6 +23,7 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
 
     return (
         <Card 
+            role='button'
             onClick={handleCardClick} 
             sx={{
                 cursor: 'pointer',
