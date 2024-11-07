@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# Mov'Heat Mov'Hit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Mov'Heat Mov'Hit project, a React application that allows you to discover movies using the TMDb API.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before starting the app, ensure that you have Node.js and npm installed on your machine. If not, you can download them from nodejs.org.
 
-### `npm start`
+## Installation 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Follow the steps below to set up the project on your local machine.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### 1. Install dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run the following command to install the necessary dependencies for the frontend:
 
-### `npm run build`
+```bash 
+npm install  
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Set up the environment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a .env file at the root of the project. In this file, you will need to define an environment variable REACT_APP_TMDB_JWT for authentication with the TMDb API. Copy the following line into your .env file:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```plaintext 
+REACT_APP_TMDB_JWT=YOUR_TMDB_KEY
+```
 
-### `npm run eject`
+### 3. Set up the backend (Separate Repo)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The backend of the project is in a separate repository. To set it up, follow these steps:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Fork the backend repository from https://github.com/TheGoozmeister/digitalisim_backend
+-Clone your fork of the backend to your local machine
+-Install the backend dependencies :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash 
+npm install  
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-Start the server using node:
 
-## Learn More
+```bash 
+node server  
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The backend will now be available at http://localhost:3001
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 4. Start the React App
+
+Go back to the frontend directory and run the following command to start the React app in development mode:
+
+```bash 
+npm start  
+```
+
+The app will be available at http://localhost:3000.
+
+### 5. Log in to the application
+
+When you open the app in your browser, you'll be prompted to log in. Use the following credentials to log in:
+
+    Nom d'utilisateur: admin
+    Mot de passe: admin
+
