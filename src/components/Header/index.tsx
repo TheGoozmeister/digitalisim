@@ -23,118 +23,120 @@ function Header() {
     };
 
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <Box sx={{ flexGrow: 1, cursor: 'pointer' }}>
-                    <Link 
-                        to="/" 
-                        style={{ textDecoration: 'none', color: 'inherit' }}
-                    >
-                        <Typography variant="h4" color="inherit">
-                            Mov'Heat
-                        </Typography>
-                        <Typography variant="h5" color="inherit">
-                            Mov'Hit
-                        </Typography>
-                    </Link>
-                </Box>
-                {isDesktop ? (
-                    <List sx={{ display: 'flex' }}>
-                        {isLoggedIn && 
-                            <ListItem
-                                component={Link}
-                                to="/"
-                                sx={{
-                                    padding: '0 16px',
-                                    width: '200px', 
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    textDecoration: 'none', 
-                                    color: 'inherit',
-                                }}
-                            >
-                                <ListItemText primary="Accueil" />
-                            </ListItem>
-                        }
-                        {isLoggedIn ? (
-                            <ListItem 
-                                onClick={handleLogout} 
-                                sx={{
-                                    padding: '0 16px', 
-                                    width: '200px', 
-                                    cursor: 'pointer', 
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    textDecoration: 'none', 
-                                    color: 'inherit',
-                                }}
-                            >
-                                <ListItemText primary="Se déconnecter" />
-                            </ListItem>
-                        ) : (
-                            <ListItem
-                                component={Link}
-                                to="/login"
-                                sx={{
-                                    padding: '0 16px',
-                                    width: '200px', 
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    textDecoration: 'none', 
-                                    color: 'inherit',
-                                }}
-                            >
-                                <ListItemText primary="Se connecter" />
-                            </ListItem>
-                        )}
-                    </List>
-                ) : (
-                    <IconButton
-                        color="inherit"
-                        edge="end"
-                        onClick={toggleDrawer(true)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                )}
-                <Drawer
-                    anchor="right"
-                    open={drawerOpen}
-                    onClose={toggleDrawer(false)}
-                >
-                    <List sx={{ width: '250px' }}>
-                        {isLoggedIn && 
-                            <ListItem
-                                component={Link}
-                                to="/"
-                                onClick={toggleDrawer(false)}
-                                style={{ textDecoration: 'none', color: 'inherit' }}
-                            >
-                                <ListItemText primary="Accueil" />
-                            </ListItem>
-                        }
-                        {isLoggedIn ? (
-                            <>
-                                <ListItem onClick={() => { handleLogout(); toggleDrawer(false)(); }} sx={{cursor: 'pointer'}}>
+        <header>
+            <AppBar position="static">
+                <Toolbar>
+                    <Box sx={{ flexGrow: 1, cursor: 'pointer' }}>
+                        <Link 
+                            to="/" 
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
+                            <Typography variant="h4" color="inherit">
+                                Mov'Heat
+                            </Typography>
+                            <Typography variant="h5" color="inherit">
+                                Mov'Hit
+                            </Typography>
+                        </Link>
+                    </Box>
+                    {isDesktop ? (
+                        <List sx={{ display: 'flex' }}>
+                            {isLoggedIn && 
+                                <ListItem
+                                    component={Link}
+                                    to="/"
+                                    sx={{
+                                        padding: '0 16px',
+                                        width: '200px', 
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        textDecoration: 'none', 
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    <ListItemText primary="Accueil" />
+                                </ListItem>
+                            }
+                            {isLoggedIn ? (
+                                <ListItem 
+                                    onClick={handleLogout} 
+                                    sx={{
+                                        padding: '0 16px', 
+                                        width: '200px', 
+                                        cursor: 'pointer', 
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        textDecoration: 'none', 
+                                        color: 'inherit',
+                                    }}
+                                >
                                     <ListItemText primary="Se déconnecter" />
                                 </ListItem>
-                            </>
-                        ) : (
-                            <>
+                            ) : (
                                 <ListItem
                                     component={Link}
                                     to="/login"
-                                    onClick={toggleDrawer(false)}
-                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                    sx={{
+                                        padding: '0 16px',
+                                        width: '200px', 
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        textDecoration: 'none', 
+                                        color: 'inherit',
+                                    }}
                                 >
                                     <ListItemText primary="Se connecter" />
                                 </ListItem>
-                            </>
-                        )}
-                    </List>
-                </Drawer>
-            </Toolbar>
-        </AppBar>
+                            )}
+                        </List>
+                    ) : (
+                        <IconButton
+                            color="inherit"
+                            edge="end"
+                            onClick={toggleDrawer(true)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    )}
+                    <Drawer
+                        anchor="right"
+                        open={drawerOpen}
+                        onClose={toggleDrawer(false)}
+                    >
+                        <List sx={{ width: '250px' }}>
+                            {isLoggedIn && 
+                                <ListItem
+                                    component={Link}
+                                    to="/"
+                                    onClick={toggleDrawer(false)}
+                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                >
+                                    <ListItemText primary="Accueil" />
+                                </ListItem>
+                            }
+                            {isLoggedIn ? (
+                                <>
+                                    <ListItem onClick={() => { handleLogout(); toggleDrawer(false)(); }} sx={{cursor: 'pointer'}}>
+                                        <ListItemText primary="Se déconnecter" />
+                                    </ListItem>
+                                </>
+                            ) : (
+                                <>
+                                    <ListItem
+                                        component={Link}
+                                        to="/login"
+                                        onClick={toggleDrawer(false)}
+                                        style={{ textDecoration: 'none', color: 'inherit' }}
+                                    >
+                                        <ListItemText primary="Se connecter" />
+                                    </ListItem>
+                                </>
+                            )}
+                        </List>
+                    </Drawer>
+                </Toolbar>
+            </AppBar>
+        </header>
     );
 }
 

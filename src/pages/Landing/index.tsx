@@ -123,9 +123,15 @@ function Landing() {
                 Chef d'oeuvre ou nanar ? A vous de voir ! 
             </Typography>
             <DrawerFilter onFilterChange={handleFilterChange} />            
-            <FormControl fullWidth sx={{ mb: 2 }}>
-                <InputLabel>Tri par</InputLabel>
-                <Select value={sortCriterion} onChange={handleSortChange}>
+            <FormControl fullWidth sx={{ mb: 2 }} variant="outlined">
+                <InputLabel id="sort-by-label">Tri par</InputLabel>
+                <Select
+                    labelId="sort-by-label"
+                    id="sort-by-select"
+                    value={sortCriterion}
+                    onChange={handleSortChange}
+                    label="Tri par"  
+                >
                     <MenuItem value="release_date_desc">Date de sortie (décroissant)</MenuItem>
                     <MenuItem value="release_date_asc">Date de sortie (croissant)</MenuItem>
                     <MenuItem value="rating_desc">Note (décroissant)</MenuItem>
@@ -139,7 +145,7 @@ function Landing() {
                             title={movie.title}
                             id={movie.id}
                             cover={movie.poster_path}
-                            description={movie.overview}
+                            description={movie.overview || "La description pour ce film n'est pas disponible. Nous vous prions d'accepter nos excuses."}                            
                             rating={movie.vote_average}
                             releaseDate={movie.release_date}
                         />

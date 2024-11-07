@@ -66,6 +66,28 @@ const theme = createTheme({
                 },
             },
         },
+        MuiSlider: {
+            styleOverrides: {
+                root: {
+                    color: '#333',  
+                    height: 4,      
+                },
+                track: {
+                    backgroundColor: '#333',  
+                },
+                rail: {
+                    backgroundColor: '#ddd',  
+                },
+                mark: {
+                    backgroundColor: '#555',  
+                    height: 8,
+                    width: 2,
+                },
+                markLabel: {
+                    color: '#333', 
+                },
+            },
+        },
     },
 });
 

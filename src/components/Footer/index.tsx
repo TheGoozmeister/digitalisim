@@ -1,38 +1,31 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FolderIcon from '@mui/icons-material/Folder';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Typography from '@mui/material/Typography';
+
 
 function Footer() {
 
-    const [value, setValue] = React.useState('recents');
-
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
-    };
-
     return (
         <footer>
-            <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
-            <BottomNavigationAction
-                label="Recents"
-                value="recents"
-                icon={<RestoreIcon />}
-            />
-            <BottomNavigationAction
-                label="Favorites"
-                value="favorites"
-                icon={<FavoriteIcon />}
-            />
-            <BottomNavigationAction
-                label="Nearby"
-                value="nearby"
-                icon={<LocationOnIcon />}
-            />
-            <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
+            <BottomNavigation
+                sx={{
+                    backgroundColor: '#333',  // Couleur de fond du thème
+                    padding: '20px 0',
+                    marginTop: "80px",
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Typography variant="h6" color="white" sx={{ fontFamily: "'Poppins', sans-serif" }}>
+                    Move Heat Move Hit
+                </Typography>
+                <Typography variant="body2" color="white" sx={{ mt: 1 }}>
+                    Développé par Vincent Pastor
+                </Typography>
+                <Typography variant="body2" color="white" sx={{ mt: 1 }}>
+                    Réalisé avec React et l'API de TMDB
+                </Typography>
             </BottomNavigation>
         </footer>
     );
