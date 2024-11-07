@@ -108,7 +108,7 @@ function DrawerFilter({ onFilterChange }: DrawerFilterProps): JSX.Element {
                 valueLabelDisplay="auto"
                 min={1950}
                 max={2024}
-                marks={[{ value: 1950, label: '1950' }, { value: 2023, label: '2024' }]}
+                marks={[{ value: 1950, label: '1950' }, { value: 2024, label: '2024' }]}
                 sx={{ mt: 2, mb: 1, width: '100%' }}
             />
             </ListItem>
