@@ -8,8 +8,7 @@ Before starting the app, ensure that you have Node.js and npm installed on your 
 
 ## Installation 
 
-Follow the steps below to set up the project on your local machine.
-
+Clone the project repository and follow the steps below to set up the project on your local machine. 
 
 ### 1. Install dependencies
 
