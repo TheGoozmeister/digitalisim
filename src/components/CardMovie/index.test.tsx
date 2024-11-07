@@ -6,6 +6,10 @@ import CardMovie from './index';
 import { BrowserRouter } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: jest.fn(),
+}));
 
 describe('CardMovie component', () => {
     const mockNavigate = useNavigate as jest.Mock;

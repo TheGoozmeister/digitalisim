@@ -64,6 +64,7 @@ function Movie(): JSX.Element {
 
     return (
         <Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}> 
+            {/* Title Section */}
             <Typography
                 variant="h4"
                 gutterBottom
@@ -76,6 +77,8 @@ function Movie(): JSX.Element {
             >
                 {movieDetails.title}
             </Typography>
+
+            {/* Image Section */}
             <Box display="flex" justifyContent="center" mb={2}>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
@@ -83,6 +86,8 @@ function Movie(): JSX.Element {
                     style={{ width: '300px', height: 'auto' }}
                 />
             </Box>
+
+            {/* Overview Section */}
             <Box display="flex" justifyContent="center" mb={2}>
                 <Typography
                     variant="body1"
@@ -95,10 +100,14 @@ function Movie(): JSX.Element {
                     {movieDetails.overview}
                 </Typography>
             </Box>
+            
+            {/* Adult Section */}
             {movieDetails.adult && (
                 <Chip label="Film pour adultes" color="error" icon={<Theaters />} sx={{ marginBottom: 2 }} />
             )}
             <Divider sx={{ marginY: 2 }} />
+
+            {/* Multiple Informations Section */}
             <Box display="flex" justifyContent="space-between" flexWrap="wrap" mb={2}>
                 <Box
                     display="flex"

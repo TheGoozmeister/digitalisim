@@ -1,6 +1,5 @@
-// src/services/tmdbApi.ts
-
 import axios from "axios";
+
 
 const API_TOKEN = process.env.REACT_APP_TMDB_JWT;
 const BASE_URL = 'https://api.themoviedb.org/3';

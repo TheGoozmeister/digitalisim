@@ -7,6 +7,7 @@ import DrawerFilter from '../../components/DrawerFilter';
 import { SelectChangeEvent } from '@mui/material';
 import Box from '@mui/material/Box'; 
 
+
 interface Movie {
     id: number;
     title: string;
@@ -26,7 +27,7 @@ interface Filters {
     releaseYearRange: number[]; 
 }
 
-function Landing() {
+function Landing(): JSX.Element {
 
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -47,7 +48,6 @@ function Landing() {
                 const firstPageData = await getPopularMovies(1);
                 const popularMovies = firstPageData.results;
                 setMovies(popularMovies);
-
             } catch (err) {
                 setError("Erreur lors du chargement des films.");
                 console.error("Erreur lors de la récupération des films populaires :", err);
@@ -109,6 +109,7 @@ function Landing() {
 
     return (
         <Container>
+            {/* Title/Description Section */}
             <Typography 
                 variant="h1" 
                 sx={{fontSize:{xs:'2.4rem'}}}
@@ -122,6 +123,8 @@ function Landing() {
                 gutterBottom>
                 Chef d'oeuvre ou nanar ? A vous de voir ! 
             </Typography>
+
+            {/* Filter/Sort Section */}
             <DrawerFilter onFilterChange={handleFilterChange} />            
             <FormControl fullWidth sx={{ mb: 2 }} variant="outlined">
                 <InputLabel id="sort-by-label">Tri par</InputLabel>
@@ -138,6 +141,8 @@ function Landing() {
                     <MenuItem value="rating_asc">Note (croissant)</MenuItem>
                 </Select>
             </FormControl>
+
+            {/* Movies Section */}
             <Grid container spacing={2}>
                 {sortedMovies.map((movie) => (
                     <Grid size={{ xs: 12, md: 6 }} key={movie.id}>

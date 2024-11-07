@@ -26,7 +26,6 @@ function setToken(token: string): void {
 
 async function login(userDatas: UserCredentials): Promise<LoginResponse> {
     try {
-        console.log("userDatas", userDatas)
         const response: AxiosResponse<LoginResponse> = await axios.post<LoginResponse>(
             `${FULL_URL}/api/auth/login`, 
             userDatas, 

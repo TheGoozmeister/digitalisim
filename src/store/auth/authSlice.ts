@@ -1,5 +1,3 @@
-// src/store/authSlice.ts
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
@@ -19,7 +17,7 @@ const authSlice = createSlice({
     reducers: {
         loginReducer(state, action: PayloadAction<{ userName: string }>) {
             state.isLoggedIn = true;
-            state.userName = action.payload.userName; // Stockage du nom d'utilisateur dans le state
+            state.userName = action.payload.userName; 
         },
         logoutReducer(state) {
             state.isLoggedIn = false;
@@ -29,6 +27,6 @@ const authSlice = createSlice({
     }
 });
 
-export const { loginReducer, logoutReducer } = authSlice.actions;
 
+export const { loginReducer, logoutReducer } = authSlice.actions;
 export default authSlice.reducer;

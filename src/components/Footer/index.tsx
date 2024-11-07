@@ -3,13 +3,13 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import Typography from '@mui/material/Typography';
 
 
-function Footer() {
+function Footer(): JSX.Element {
 
     return (
         <footer>
             <BottomNavigation
                 sx={{
-                    backgroundColor: '#333',  // Couleur de fond du thème
+                    backgroundColor: '#333',  
                     padding: '20px 0',
                     marginTop: "80px",
                     display: 'flex',

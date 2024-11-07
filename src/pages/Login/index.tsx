@@ -1,5 +1,3 @@
-// src/components/Login.tsx
-
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Alert } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -8,8 +6,9 @@ import { AppDispatch } from '../../store/store';
 import { login } from '../../services/authApi';
 import { loginReducer } from '../../store/auth/authSlice';
 
-function Login() {
-    
+
+function Login(): JSX.Element {
+
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate(); 
     const [username, setUsername] = useState<string>('');

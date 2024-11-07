@@ -3,6 +3,7 @@ import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Star, CalendarToday } from '@mui/icons-material';
 
+
 interface CardMovieProps {
     title: string;
     id: number;
@@ -49,8 +50,19 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
                     height: '100%',  
                 }}
             />
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 2 }}>
-                <Typography variant="h6" component="div" gutterBottom>
+            <CardContent 
+                sx={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    justifyContent: 'space-between', 
+                    padding: 2 
+                }}
+            >
+                <Typography 
+                    variant="h6" 
+                    component="div" 
+                    gutterBottom
+                >
                     {title}
                 </Typography>
                 <Box sx={{
@@ -69,7 +81,11 @@ function CardMovie({ title, id, cover, description, rating, releaseDate }: CardM
                         {description}
                     </Typography>
                 </Box>
-                <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Box 
+                    display="flex" 
+                    justifyContent="space-between" 
+                    alignItems="center"
+                >
                     <Box display="flex" alignItems="center">
                         <Star sx={{ fontSize: 16, marginRight: 0.5 }} />
                         <Typography variant="body2" color="text.secondary">

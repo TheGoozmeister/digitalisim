@@ -8,9 +8,9 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/__mocks__/fileMock.js',
   },
   testEnvironment: 'jsdom',
-  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],  // Inclut 'ts' et 'tsx' si tu utilises TypeScript
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],  
   setupFilesAfterEnv: ["jest-fetch-mock"],
   transformIgnorePatterns: [
-    "/node_modules/(?!(axios)/)",  // Ajoute cette ligne pour inclure `axios` dans la transformation
+    "/node_modules/(?!(axios)/)",  
   ],
 };
