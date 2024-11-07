@@ -24,28 +24,31 @@ npm install
 Create a .env file at the root of the project. In this file, you will need to define an environment variable REACT_APP_TMDB_JWT for authentication with the TMDb API. Copy the following line into your .env file:
 
 ```plaintext 
-REACT_APP_TMDB_JWT=YOUR_TMDB_KEY
+REACT_APP_TMDB_JWT=YOUR_TMDB_TOKEN
 ```
+
+**Important**: The token provided in this example is private to the user who generated it. Therefore, each developer needs to create their own API token from TMDb and replace it in the .env file. Never share your API token publicly.
+
 
 ### 3. Set up the backend (Separate Repo)
 
 The backend of the project is in a separate repository. To set it up, follow these steps:
 
--Fork the backend repository from https://github.com/TheGoozmeister/digitalisim_backend
--Clone your fork of the backend to your local machine
--Install the backend dependencies :
+- Fork the backend repository from https://github.com/TheGoozmeister/digitalisim_backend
+- Clone your fork of the backend to your local machine
+- Install the backend dependencies :
 
 ```bash 
 npm install  
 ```
 
--Start the server using node:
+- Start the server using node:
 
 ```bash 
 node server  
 ```
 
-The backend will now be available at http://localhost:3001
+The backend will now be available at http://localhost:3001 
 
 ### 4. Start the React App
 
@@ -55,7 +58,7 @@ Go back to the frontend directory and run the following command to start the Rea
 npm start  
 ```
 
-The app will be available at http://localhost:3000.
+The app will be available at http://localhost:3000
 
 ### 5. Log in to the application
 
